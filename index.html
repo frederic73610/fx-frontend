@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8"><title>FX Fullstack</title></head>
+  <body>
+    <h2>FX Aggregator (Fullstack)</h2>
+    <p>Le frontend est opérationnel et communique avec FastAPI.</p>
+    <div id="prediction"></div>
+    <script>
+      fetch("http://127.0.0.1:8000/predict?symbol=EUR/USD&interval=1day")
+        .then(r => r.json())
+        .then(d => {
+          document.getElementById("prediction").innerText = "Prédiction IA : " + d.prediction;
+        })
+        .catch(() => {
+          document.getElementById("prediction").innerText = "Erreur lors de la prédiction.";
+        });
+    </script>
+  </body>
+</html>
